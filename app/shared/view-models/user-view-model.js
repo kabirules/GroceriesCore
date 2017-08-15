@@ -32,6 +32,20 @@ function User(info) {
         });
     };
 
+    viewModel.register = function() {
+        return fetchModule.fetch(config.apiUrl + "Users", {
+            method: "POST",
+            body: JSON.stringify({
+                Username: viewModel.get("email"),
+                Email: viewModel.get("email"),
+                Password: viewModel.get("password")
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(handleErrors);
+    };    
+
     return viewModel;
 }
 
